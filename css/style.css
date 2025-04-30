@@ -1,0 +1,6 @@
+.page { display: none; padding: 2rem; color: white; }
+.active { display: block; }
+nav { background-color: #222; padding: 1rem; display: flex; gap: 1rem; }
+nav a { color: white; text-decoration: none; cursor: pointer; }
+nav a:hover { text-decoration: underline; }
+body { background-color: #111; color: white; font-family: sans-serif; }
