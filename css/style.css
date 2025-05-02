@@ -1,6 +1,40 @@
-.page { display: none; padding: 2rem; color: white; }
+@font-face {
+    font-family: 'BMHanna';
+    src: url('/fonts/BMHANNA.woff2') format('woff2'),
+    url('/fonts/BMHANNA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body{ margin: 0; padding: 0; background-color: #111; }
+.page { display: none; color: white; position: relative; width: 100%;}
 .active { display: block; }
-nav { background-color: #222; padding: 1rem; display: flex; gap: 1rem; }
-nav a { color: white; text-decoration: none; cursor: pointer; }
-nav a:hover { text-decoration: underline; }
-body { background-color: #111; color: white; font-family: sans-serif; }
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    align-self: stretch;
+    flex-wrap: wrap;
+    gap: 30px 20px;
+    padding-left: 20px;
+    box-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+    z-index: 1000;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'BMHanna', sans-serif;
+    padding-right: 20px;
+    border-right: 1px solid #919191;
+}
+nav a:first-child {
+    font-size: 30px;
+    text-shadow: 0 10px 4px rgba(207, 207, 207, 0.25);
+    font-family: "Irish Grover", sans-serif;
+}
+nav a:last-child {
+    line-height: 35px;
+}

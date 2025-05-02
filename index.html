@@ -5,62 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NAStock</title>
   <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/homestyle.css" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
 <nav>
-  <a href="/home" data-page="home">홈</a>
+  <a href="/home" data-page="home">NAStock</a>
+  <a href="/list" data-page="list">의안목록</a>
+  <a href="/easy" data-page="easy">간편검색</a>
   <a href="/detail" data-page="detail">상세검색</a>
+  <a href="/marketMain" data-page="marketMain">시장분석</a>
   <a href="/about" data-page="about">사이트 정보</a>
-  <a href="/market" data-page="market">시장분석</a>
 </nav>
-
 <section id="home" class="page">
-  <h1>NAStock 국회와 국민의 연결</h1>
-  <p>국회와 국민, 국회와 시장</p>
-</section>
-
-<section id="search" class="page">
-  <h2>검색 결과</h2>
-  <p>의안 목록이 여기에 표시됩니다.</p>
-</section>
-
-<section id="detail" class="page">
-  <h2>상세검색</h2>
-  <form onsubmit="submitSearch(event)">
-    <label>의안명: <input type="text" name="bill_name" /></label><br/>
-    <label>제안자: <input type="text" name="proposer" /></label><br/>
-    <label>제안일: <input type="date" name="propose_date" /></label><br/>
-    <button type="submit">검색</button>
+  <div class="home-main-phrase">
+    <span>NAStock</span>
+    <span>국회와 국민, 국회와 주식</span>
+  </div>
+  <form id="search-form">
+    <div class="search-container">
+      <button class="search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <label for="search-input"></label>
+      <input type="text" class="search-input" id="search-input" placeholder="검색어를 입력하세요." >
+    </div>
   </form>
-</section>
-
-<section id="about" class="page">
-  <h1>사이트 정보</h1>
-  <p>NAStock은 국회 의안 데이터와 주식시작 변동성을 제공하는 플랫폼입니다.</p>
-  <p>개발자: [개발자 이름]</p>
-  <p>버전: 1.0</p>
-  <p>연락처: [연락처 정보]</p>
-</section>
-
-<section id="market" class="page">
-  <h1>주식 시장 정보</h1>
-  <p>상장사 주식 시장 정보가 여기에 표시됩니다.</p>
-</section>
-
-<section id="bill" class="page">
-  <h1>주식 시장 정보</h1>
-  <p>상장사 주식 시장 정보가 여기에 표시됩니다.</p>
-</section>
-
-<section id="marketSearchList" class="page">
-  <h1>주식 시장 정보</h1>
-  <p>상장사 주식 시장 정보가 여기에 표시됩니다.</p>
+  <div class="home-sub-phrase">
+    <span>
+      NAStock<br>
+      ■ 사용자는 자유롭게 국회의 의안에 의견을 남길 수 있습니다.<br>
+      ■ 의안이 시행된 이후 주가 시장에 미치는 영향을 보여줍니다.
+    </span>
+  </div>
+  <div class="home-list">
+    <table>
+      <thead>
+      <tr>
+        <th>번호</th>
+        <th>대수</th>
+        <th>의안번호</th>
+        <th>의안명</th>
+        <th>제안자</th>
+        <th>제안일</th>
+        <th>처리구분</th>
+      </tr>
+      </thead>
+      <tbody id="home-list-body"></tbody>
+    </table>
+    <div id="pagination"></div>
+  </div>
 </section>
 
 <section id="notfound" class="page">
   <h1>404 - 페이지를 찾을 수 없습니다.</h1>
   <p>요청하신 페이지는 존재하지 않습니다.</p>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="/scripts/env.js"></script>
 <script type="text/javascript" src="/scripts/app.js"></script>
 </body>
 </html>
