@@ -6,18 +6,22 @@
   <title>NAStock</title>
   <link rel="stylesheet" href="/css/style.css" type="text/css"/>
   <link rel="stylesheet" href="/css/homestyle.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/detailstyle.css" type="text/css"/>
   <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
 <nav>
   <a href="/home" data-page="home">NAStock</a>
-  <a href="/list" data-page="list">의안목록</a>
-  <a href="/easy" data-page="easy">간편검색</a>
   <a href="/detail" data-page="detail">상세검색</a>
-  <a href="/marketMain" data-page="marketMain">시장분석</a>
-  <a href="/about" data-page="about">사이트 정보</a>
+  <a href="/market" data-page="market">시장분석</a>
 </nav>
+<div id="loading" class="page active">
+  <div id="loading-container" style="display: none; margin: 10px 0;">
+    <p>불러오는 중... <span id="progress-text">0%</span></p>
+    <progress id="progress-bar" value="0" max="100" style="width: 100%;"></progress>
+  </div>
+</div>
 <section id="home" class="page">
   <div class="home-main-phrase">
     <span>NAStock</span>
@@ -56,6 +60,118 @@
     </table>
     <div id="pagination"></div>
   </div>
+</section>
+<section id="detail" class="page">
+  <div class="detail-main-phrase">상세검색</div>
+  <div class="detail-age">
+    <label for="age1">대수</label>
+    <select id="age1">
+      <option>제22대 (2024-2028)</option>
+      <option>제21대 (2020-2024)</option>
+      <option>제20대 (2016-2020)</option>
+      <option>제19대 (2012-2016)</option>
+      <option>제18대 (2008-2012)</option>
+      <option>제17대 (2004-2008)</option>
+      <option>제16대 (2000-2004)</option>
+      <option>제15대 (1996-2000)</option>
+      <option>제14대 (1992-1996)</option>
+      <option>제13대 (1988-1992)</option>
+      <option>제12대 (1985-1988)</option>
+      <option>제11대 (1981-1985)</option>
+      <option>국가보위입법회의 (1980-1981)</option>
+      <option>제10대 (1979-1980)</option>
+      <option>제9대 (1973-1979)</option>
+      <option>비상국무회의 (1972-1973)</option>
+      <option>제8대 (1971-1972)</option>
+      <option>제7대 (1967-1971)</option>
+      <option>제6대 (1963-1967)</option>
+      <option>국가재건회의 (1961-1963)</option>
+        <option>제5대 (1960-1961)</option>
+        <option>제4대 (1958-1960)</option>
+        <option>제3대 (1954-1958)</option>
+        <option>제2대 (1950-1954)</option>
+        <option>제헌 (1948-1950)</option>
+    </select>
+    <label for="age2"> ~ </label>
+    <select id="age2">
+      <option>제22대 (2024-2028)</option>
+      <option>제21대 (2020-2024)</option>
+      <option>제20대 (2016-2020)</option>
+      <option>제19대 (2012-2016)</option>
+      <option>제18대 (2008-2012)</option>
+      <option>제17대 (2004-2008)</option>
+      <option>제16대 (2000-2004)</option>
+      <option>제15대 (1996-2000)</option>
+      <option>제14대 (1992-1996)</option>
+      <option>제13대 (1988-1992)</option>
+      <option>제12대 (1985-1988)</option>
+      <option>제11대 (1981-1985)</option>
+      <option>국가보위입법회의 (1980-1981)</option>
+      <option>제10대 (1979-1980)</option>
+      <option>제9대 (1973-1979)</option>
+      <option>비상국무회의 (1972-1973)</option>
+      <option>제8대 (1971-1972)</option>
+      <option>제7대 (1967-1971)</option>
+      <option>제6대 (1963-1967)</option>
+      <option>국가재건회의 (1961-1963)</option>
+        <option>제5대 (1960-1961)</option>
+        <option>제4대 (1958-1960)</option>
+        <option>제3대 (1954-1958)</option>
+        <option>제2대 (1950-1954)</option>
+        <option>제헌 (1948-1950)</option>
+    </select>
+  </div>
+  <div class="detail-billno">
+    <label for="billno">의안번호</label>
+    <input type="text" id="billno" name="billno" placeholder="의안번호를 입력하세요." oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+  </div>
+  <div class="detail-billnm">
+    <label for="billnm">의안명</label>
+    <input type="text" id="billnm" name="billnm" placeholder="의안명을 입력하세요." />
+  </div>
+  <div class="detail-proposer">
+    <label for="proposer">제안자</label>
+    <input type="text" id="proposer" name="proposer" placeholder="제안자를 입력하세요." />
+  </div>
+  <div class="detail-ppdt">
+    <label for="date">제안일</label>
+    <input type="date" id="date" name="ppdt">
+  </div>
+  <div class="detail-search-container">
+    <button id="detail-search-button">검색</button>
+  </div>
+</section>
+<section id="search" class="page">
+    <div class="search-result-main-phrase">검색결과</div>
+    <div class="search-result-list">
+        <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>대수</th>
+            <th>의안번호</th>
+            <th>의안명</th>
+            <th>제안자</th>
+            <th>제안일</th>
+            <th>처리구분</th>
+        </tr>
+        </thead>
+        <tbody id="search-result-list-body"></tbody>
+        </table>
+        <div id="search-result-pagination"></div>
+    </div>
+</section>
+<section id="bills" class="page">
+</section>
+<section id="market" class="page">
+  <div id="overall-progress-wrapper" style="margin: 10px 0;">
+    <div id="progress-bar-law" style="height: 20px; width: 0%; background: green;"></div>
+  </div>
+  <div id="progress-text-law">전체 진행률: 준비 중...</div>
+  <hr>
+  <div id="term-progress-section"></div> <!-- 대수별 진행률 바가 여기 들어감 -->
+  <hr>
+  <div id="results"></div>
 </section>
 
 <section id="notfound" class="page">

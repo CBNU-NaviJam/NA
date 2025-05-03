@@ -5,7 +5,7 @@
     font-weight: normal;
     font-style: normal;
 }
-html, body{ margin: 0; padding: 0; background-color: #111; }
+html, body{ margin: 0; padding: 0; background-color: #111; height: 100%;}
 .page { display: none; color: white; position: relative; width: 100%;}
 .active { display: block; }
 nav {
@@ -37,4 +37,15 @@ nav a:first-child {
 }
 nav a:last-child {
     line-height: 35px;
+}
+.term-group {
+    margin-bottom: 12px;
+}
+.term-group h3 {
+    font-size: 16px;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+.term-content p {
+    margin: 4px 0;
 }
