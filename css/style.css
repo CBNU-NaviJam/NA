@@ -38,14 +38,3 @@ nav a:first-child {
 nav a:last-child {
     line-height: 35px;
 }
-.term-group {
-    margin-bottom: 12px;
-}
-.term-group h3 {
-    font-size: 16px;
-    color: #007bff;
-    margin-bottom: 5px;
-}
-.term-content p {
-    margin: 4px 0;
-}

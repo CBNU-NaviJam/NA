@@ -1,0 +1,106 @@
+.law-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #1f1f1f;
+    padding: 1.2rem 2rem;
+    border-radius: 0.8rem;
+    margin: 30px auto;
+    width: 70%;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 가능 */
+}
+
+.law-search-label {
+    font-weight: bold;
+    color: #fff;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+/* input + icon 래퍼 */
+.law-search-input-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.law-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.8rem; /* 왼쪽에 아이콘 공간 확보 */
+    border: none;
+    border-radius: 999px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.15rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.law-search-input::placeholder {
+    color: #777;
+}
+
+/* 돋보기 아이콘 */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.9rem;
+    transform: translateY(-50%);
+    width: 1.3rem;
+    height: 1.3rem;
+    pointer-events: none; /* 아이콘 클릭시 input 동작 유지 */
+    color: #777;
+}
+
+.law-search-select {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    font-size: 1.1rem;
+    outline: none;
+    flex-shrink: 0;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.law-search-select option {
+    background-color: #222;
+    color: #fff;
+}
+
+/* 반응형: 600px 이하에서 입력창과 셀렉트 박스가 아래로 내려가도록 */
+@media (max-width: 600px) {
+    .law-search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 1rem 1rem;
+        max-width: 100%;
+        width: 95%;
+    }
+
+    .law-search-label {
+        margin-bottom: 0.3rem;
+    }
+
+    .law-search-input-wrapper,
+    .law-search-select {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .law-search-input {
+        font-size: 1rem;
+        padding-left: 2.5rem;
+    }
+
+    .law-search-select {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}

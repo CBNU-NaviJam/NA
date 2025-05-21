@@ -1,0 +1,121 @@
+.detail-main-phrase {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'BMHanna', 'sans-serif';
+    font-size: 50px;
+    font-weight: 400;
+}
+.detail-search-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* 적절히 조정 */
+    font-family: 'BMHanna', 'sans-serif';
+    font-size: 32px;
+    font-weight: 400;
+}
+
+/* 모든 detail-XXX 요소 공통 스타일 */
+.detail-search-container > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* label 고정 너비 */
+.detail-search-container label {
+    width: 40%; /* 원하는 너비로 조정 */
+    flex-shrink: 0;
+}
+/* input, select 공통 스타일 */
+.detail-search-container input,
+.detail-search-container select {
+    flex: 1;
+    font-size: 24px;
+    padding: 4px 8px;
+}
+.detail-ppsr-sess input {
+    width: 100%;
+    text-align: right;
+}
+.detail-age select,
+.detail-ppro-dt input{
+    width: 100%;
+}
+.detail-age select,
+.detail-ppro-dt,
+.detail-ppsr-sess {
+    gap: 8px;
+}
+#detail-main-select {
+    flex: 1 1 50%; /* 첫 번째 select가 반 차지 */
+}
+
+#detail-sub-select-yes,
+#detail-sub-select-no {
+    flex: 1 1 50%; /* 두번째/세번째도 반씩 */
+    display: none; /* 기본 숨김 */
+}
+.detail-search-buttons {
+    position: absolute;
+    top: 950px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    font-family: 'BMHanna', 'sans-serif';
+    font-size: 24px;
+    font-weight: 400;
+    padding: 20px 0;
+}
+
+.detail-search-button,
+.detail-reset-button {
+    padding: 14px 80px; /* 세로 살짝 크게 (14px), 가로 넓게 (80px) */
+    min-width: 240px;
+    border: 1px solid #444;
+    border-radius: 12px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 0 0 transparent;
+}
+
+.detail-search-button:hover,
+.detail-reset-button:hover {
+    background-color: #2a2a2a;
+    box-shadow: 0 0 12px rgba(100, 150, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.detail-search-button {
+    border-color: #6495ff;
+    color: #aaccff;
+}
+
+.detail-reset-button {
+    border-color: #888;
+    color: #ccc;
+}
+
+.detail-reset-button:hover {
+    background-color: #333;
+    box-shadow: 0 0 12px rgba(180, 180, 180, 0.2);
+}
+
+

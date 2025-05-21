@@ -1,0 +1,176 @@
+#bill {
+    width: 60%;
+    margin: 2rem auto; /* 수직 여백 + 가운데 정렬 */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #000;
+}
+.bill-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #00c8ff; /* 쿨톤 시안 계열 */
+    font-weight: bold;
+}
+
+.table-card {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.table-card:hover {
+    transform: translateY(-4px);
+}
+
+.table-title {
+    font-size: 1.2rem;
+    color: #00ffc8; /* 밝은 청록 */
+    margin-bottom: 1rem;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    color: #ddd;
+}
+
+.styled-table thead {
+    background-color: #222;
+    color: #fff;
+}
+
+.styled-table th, .styled-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.styled-table tr:hover {
+    background-color: #1e1e1e;
+}
+
+.styled-table th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.opinion-section {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #000;
+    color: #eee;
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #00c8ff;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+}
+
+.opinion-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.input-fields {
+    display: flex;
+    gap: 1rem;
+}
+
+.opinion-name,
+.opinion-vote,
+.opinion-text {
+    background-color: #222;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.opinion-name,
+.opinion-vote {
+    width: 200px;
+}
+
+.opinion-text {
+    resize: vertical;
+    height: 80px;
+}
+
+.opinion-submit {
+    align-self: flex-end;
+    background-color: #00c8ff;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.opinion-submit:hover {
+    background-color: #00a0cc;
+}
+
+.opinion-bar {
+    display: flex;
+    height: 30px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.opinion-bar .agree {
+    background-color: #4caf50;
+    text-align: left;
+    padding-left: 10px;
+    color: #000;
+    line-height: 30px;
+}
+
+.opinion-bar .disagree {
+    background-color: #f44336;
+    text-align: right;
+    padding-right: 10px;
+    color: #fff;
+    line-height: 30px;
+}
+
+.opinion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: #222;
+    border: 1px solid #333;
+}
+
+.opinion-table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+.opinion-table th,
+.opinion-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.opinion-table tbody tr:hover {
+    background-color: #2a2a2a;
+}
+
