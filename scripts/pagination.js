@@ -135,7 +135,7 @@ export class Pagination {
         }
         document.querySelector(`.${this.headerLink}`).appendChild(this.paginationContainer);
 
-        this.paginationContainer.querySelectorAll('.home-pagination-link').forEach(link => {
+        this.paginationContainer.querySelectorAll(`.${this.paginationLink}`).forEach(link => {
             link.addEventListener('click', (e) => {
                 const page = parseInt(e.target.dataset.page);
                 if (!isNaN(page) && page !== this.currentPage) {

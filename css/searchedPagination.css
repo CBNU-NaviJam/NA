@@ -83,3 +83,19 @@
     color: white;
     text-decoration: none;
 }
+.searched-header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.searched-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.search-count {
+    font-size: 1rem;
+    color: #666;
+}
