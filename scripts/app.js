@@ -12,7 +12,7 @@ function showPage(pageId) {
     if (target) {
         target.classList.add('active');
     } else {
-        document.getElementById('notfound')?.classList.add('active');
+        navigate('notfound');
     }
     if(id === 'home'){
         let listBody = document.querySelector('.home-list-body');
@@ -189,9 +189,28 @@ function showPage(pageId) {
                 .catch(err => console.error('의안 상세검색 목록 로딩 실패: ', err));
         }
     }else if(id === 'laws'){
-        let lawslistBody = document.querySelector('.laws-list-body');
-        if(!lawslistBody) {
-            fetch('http://127.0.0.1:8000/api/valid-prom-bills/')
+        const params = new URLSearchParams(pageId?.split('?')[1] || '');
+        const sector = params.get('sector');
+        const query = params.get('query');
+        if(sector && sector !== '전체') {
+            fetch('http://127.0.0.1:8000/api/valid-prom-bills/?query=' + encodeURIComponent(query) + '&sector=' + encodeURIComponent(sector), { method: 'GET' })
+                .then(res => res.json())
+                .then(data => {
+                    renderList(data.results || data,
+                        'law',
+                        'laws-list-header',
+                        'laws-list-body',
+                        'laws-pagination',
+                        'laws-pagination-link',
+                        ['번호', '분류', '의안번호', '법률명', '공포일'],
+                        '/css/lawsPagination.css',
+                        '#laws');
+                })
+                .catch(err => console.error("공포된 법률 목록 로딩 실패:", err));
+        }else{
+            let url = 'http://127.0.0.1:8000/api/valid-prom-bills/';
+            if (query && query !== '') url += '?query=' + encodeURIComponent(query);
+            fetch(url)
                 .then(res => res.json())
                 .then(data => {
                     renderList(data.results || data,
@@ -244,6 +263,10 @@ function showPage(pageId) {
                     console.error("기업 데이터 불러오기 실패:", error);
                 });
         }
+    }else if(id === 'notfound'){
+        setTimeout(() => {
+            navigate('home');
+        }, 1000);
     }
 }
 function drawChart(code, promDt) {
@@ -357,8 +380,14 @@ function updateURL(pageId, replace = false) {
 // 페이지 이동 핸들러
 function navigate(pageId) {
     const id = sanitizePageId(pageId);
-    showPage(pageId);
-    updateURL(id);
+    pages.forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+        showPage(pageId);
+        updateURL(id);
+    } else {
+        navigate('notfound');
+    }
 }
 // 초기 라우팅 및 이벤트 등록
 function initSPA() {
@@ -458,9 +487,9 @@ function initSPA() {
     // 브라우저 뒤로/앞으로 이동 처리
     window.addEventListener('popstate', (e) => {
         const page = sanitizePageId(e.state?.page);
-        showPage(page);
+        navigate(page);
     });
-    // 메인 페이지 검색창 이벤트 처리
+    // 메인 페이지/마켓 페이지 검색창 이벤트 처리
     document.body.addEventListener('submit', (e) => {
         const form = e.target.closest('#home-search-form');
         if (form) {
@@ -468,6 +497,20 @@ function initSPA() {
             const query = document.getElementById('home-search-input').value;
             navigate('searched?quick=1&query=' + query);
         }
+        const form2 = e.target.closest('.law-search-form');
+        if (form2) {
+            e.preventDefault();
+            const query = document.getElementById('law-search-input').value;
+            const query2 = document.getElementById('law-search-filter').value;
+            navigate('laws?query=' + query+'&sector='+query2);
+        }
+    });
+    const sectorSelect = document.getElementById('law-search-filter');
+    // 이벤트 리스너 등록
+    sectorSelect.addEventListener('change', () => {
+        const query2 = sectorSelect.value;
+        const query = document.getElementById('law-search-input').value;
+        navigate('laws?query=' + query+'&sector='+query2);
     });
     // 상세검색 페이지 검색 버튼 이벤트 처리
     document.getElementById('detail-search-button').addEventListener('click', () => {

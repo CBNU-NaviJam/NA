@@ -29,7 +29,7 @@
 
 .law-search-input {
     width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.8rem; /* 왼쪽에 아이콘 공간 확보 */
+    padding: 0.75rem 1rem 0.75rem 2.8rem; /* 왼쪽에 공간 확보 */
     border: none;
     border-radius: 999px;
     background-color: #333;
@@ -42,19 +42,24 @@
 .law-search-input::placeholder {
     color: #777;
 }
-
-/* 돋보기 아이콘 */
-.search-icon {
+.law-search-button {
     position: absolute;
     top: 50%;
-    left: 0.9rem;
+    left: 10px;         /* 인풋 왼쪽 안쪽 여백 위치 */
     transform: translateY(-50%);
-    width: 1.3rem;
-    height: 1.3rem;
-    pointer-events: none; /* 아이콘 클릭시 input 동작 유지 */
-    color: #777;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    padding: 0;         /* 버튼 크기 딱 맞춤 */
+    margin: 0;          /* 여백 제거 */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .law-search-select {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;

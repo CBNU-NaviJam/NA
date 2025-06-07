@@ -34,8 +34,15 @@ export class Pagination {
     }
 
     renderHeaderAndSelector() {
-        const wrapper = document.createElement('div');
-        wrapper.className = this.headerLink;
+        let headerBody = document.getElementsByClassName(this.headerLink)[0];
+        let wrapper;
+        if(!headerBody) {
+            wrapper = document.createElement('div');
+            wrapper.className = this.headerLink;
+        }else {
+            wrapper = headerBody;
+            wrapper.innerHTML = ``;
+        }
 
         const selectorWrapper = document.createElement('div');
         selectorWrapper.className = 'pagination-page-size-control';
