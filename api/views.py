@@ -143,10 +143,20 @@ def add_comment(request, bill_id):
 
 
 def valid_prom_bills(request):
+    query = request.GET.get('query', None)
+    sector = request.GET.get('sector', None)
+    filters = {'PROM_DT__isnull': False}
+
+    if sector and sector != '전체':
+        filters['LAW_SECTOR'] = sector
+
+    if query and query != '':
+        filters['BILL_NM__icontains'] = query
+
     data = list(
         Bill.objects
-        .filter(PROM_DT__isnull=False)
-        .values('LAW_SECTOR', 'BILL_NO', 'BILL_NM', 'PROM_DT')
+            .filter(**filters)
+            .values('LAW_SECTOR', 'BILL_NO', 'BILL_NM', 'PROM_DT')
     )
     return JsonResponse(data, safe=False)
 
