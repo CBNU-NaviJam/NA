@@ -17,7 +17,7 @@ function showPage(pageId) {
     if(id === 'home'){
         let listBody = document.querySelector('.home-list-body');
         if (!listBody) {
-            fetch('http://127.0.0.1:8000/api/bills')
+            fetch('/api/bills')
                 .then(res => res.json())
                 .then(data => {
                     const bills = data.results || data;
@@ -43,7 +43,7 @@ function showPage(pageId) {
                     tbody.remove();  // tbody 전체 제거
                 }
             });
-            fetch(`http://127.0.0.1:8000/api/bills/${billNo}`)
+            fetch(`/api/bills/${billNo}`)
                 .then(res => res.json())
                 .then(data => {
                     // 제목 갱신
@@ -154,7 +154,7 @@ function showPage(pageId) {
         const params = new URLSearchParams(pageId?.split('?')[1] || '');
         const isQuick = Number(params.get('quick'));
         if(isQuick){
-            fetch(`http://127.0.0.1:8000/api/bills?bill_nm=${params.get('query')}`)
+            fetch(`/api/bills?bill_nm=${params.get('query')}`)
                 .then(res => res.json())
                 .then(data => {
                     const bills = data.results || data;
@@ -171,7 +171,7 @@ function showPage(pageId) {
                 })
                 .catch(err => console.error('의안 간편검색 목록 로딩 실패: ', err));
         }else{
-            fetch(`http://127.0.0.1:8000/api/bills?${params.toString()}`)
+            fetch(`/api/bills?${params.toString()}`)
                 .then(res => res.json())
                 .then(data => {
                     const bills = data.results || data;
@@ -193,7 +193,7 @@ function showPage(pageId) {
         const sector = params.get('sector');
         const query = params.get('query');
         if(sector && sector !== '전체') {
-            fetch('http://127.0.0.1:8000/api/valid-prom-bills/?query=' + encodeURIComponent(query) + '&sector=' + encodeURIComponent(sector), { method: 'GET' })
+            fetch('/api/valid-prom-bills/?query=' + encodeURIComponent(query) + '&sector=' + encodeURIComponent(sector), { method: 'GET' })
                 .then(res => res.json())
                 .then(data => {
                     renderList(data.results || data,
@@ -208,7 +208,7 @@ function showPage(pageId) {
                 })
                 .catch(err => console.error("공포된 법률 목록 로딩 실패:", err));
         }else{
-            let url = 'http://127.0.0.1:8000/api/valid-prom-bills/';
+            let url = '/api/valid-prom-bills/';
             if (query && query !== '') url += '?query=' + encodeURIComponent(query);
             fetch(url)
                 .then(res => res.json())
@@ -234,7 +234,7 @@ function showPage(pageId) {
         if (billNo && lawSector && lawNm && promDt){
             document.querySelector('.law-name').textContent = lawNm;
             // 1. 서버에 기업 리스트 요청 (lawSector 기반)
-            fetch(`http://127.0.0.1:8000/api/companies?prom_dt=${promDt}`)
+            fetch(`/api/companies?prom_dt=${promDt}`)
                 .then(res => res.json())
                 .then(data => {
                     const buttonContainer = document.querySelector('.company-buttons');
@@ -270,7 +270,7 @@ function showPage(pageId) {
     }
 }
 function drawChart(code, promDt) {
-    fetch(`http://127.0.0.1:8000/api/stock?code=${code}&prom_dt=${promDt}`)
+    fetch(`/api/stock?code=${code}&prom_dt=${promDt}`)
         .then(res => res.json())
         .then(data => {
             const ctx = document.getElementById('stockChart').getContext('2d');
@@ -419,7 +419,7 @@ function initSPA() {
                 alert("의안 ID가 없습니다.");
                 return;
             }
-            fetch(`http://127.0.0.1:8000/api/bills/${billId}/comments/`, {
+            fetch(`/api/bills/${billId}/comments/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, vote, text })
