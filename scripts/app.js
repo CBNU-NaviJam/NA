@@ -339,6 +339,8 @@ function drawChart(code, promDt) {
                                 minUnit: 'day'
                             },
                             ticks: {
+                                source: 'data',
+                                autoSkip: false,
                                 color: '#6b7280' // Tailwind gray-500
                             },
                             grid: {
